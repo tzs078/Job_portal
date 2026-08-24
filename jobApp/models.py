@@ -32,6 +32,33 @@ class JobSeekerProfile(models.Model):
         return self.name
 
 
+class JobPostModel(models.Model):
+    Recruiters = models.ForeignKey(UserModel,on_delete=models.CASCADE)
+    JobTitle = models.CharField(max_length=100,null=True)
+    NumberOfOpening = models.PositiveIntegerField(null=True)
+    category = models.CharField(max_length=100,null=True)
+    description = models.CharField(max_length=100,null=True)
+    skill = models.CharField(max_length=100,null=True)
+
+    def __str__(self):
+        return self.JobTitle
+
+
+class JobApplyModel(models.Model):
+    JobSeeker = models.ForeignKey(UserModel,on_delete=models.CASCADE)
+    Job = models.ForeignKey(JobPostModel, on_delete=models.CASCADE)
+    applied_at = models.DateTimeField(auto_now_add=True)
+    status = models.CharField(max_length=20, default='Pending')
+
+
+    
+
+
+
+
+
+
+
     
     
     

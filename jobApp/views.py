@@ -1,5 +1,5 @@
 from django.shortcuts import render,redirect
-from jobApp.forms import RegiForm,LoginForm,RecForm,JobSeekerForm
+from jobApp.forms import RegiForm,LoginForm,RecForm,JobSeekerForm,JobPostForm
 from jobApp.models import *
 from django.contrib.auth import login,logout
 from django.contrib.auth.decorators import login_required
@@ -96,6 +96,29 @@ def jobPage(request):
                  return redirect('home')
      
     form = JobSeekerForm(instance=profile)
+     
+    context = {
+             'form' : form,
+             'btn' : 'Submit'
+         }
+    return render(request,'pages/baseForm.html',context)
+
+
+
+
+@login_required
+def JobPostPage(request):
+    profile = JobPostModel.objects.filter(user=request.user).first()
+
+    if request.method == 'POST':
+             form = JobPostForm(request.POST,instance=profile)
+             if form.is_valid():
+                 profile = form.save(commit=False)
+                 profile.user = request.user
+                 profile.save()
+                 return redirect('home')
+     
+    form = JobPostForm(instance=profile)
      
     context = {
              'form' : form,

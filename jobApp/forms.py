@@ -53,3 +53,36 @@ class JobSeekerForm(forms.ModelForm):
                 self.fields[i].widget.attrs.update({
                     'class' : 'form-control'
             })
+
+
+class JobPostForm(forms.ModelForm):
+    class Meta:
+        model = JobPostModel 
+        fields = '__all__'
+        exclude = ['Recruiters']
+
+    def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+    
+    
+            for i in self.fields:
+                self.fields[i].widget.attrs.update({
+                    'class' : 'form-control'
+            })
+
+
+
+class JobApplyForm(forms.ModelForm):
+    class Meta:
+        model = JobApplyModel 
+        fields = '__all__'
+        exclude = ['JobSeeker','Job']
+
+    def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+    
+    
+            for i in self.fields:
+                self.fields[i].widget.attrs.update({
+                    'class' : 'form-control'
+            })
