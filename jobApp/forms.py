@@ -22,3 +22,34 @@ class RegiForm(UserCreationForm):
 class LoginForm(AuthenticationForm):
     pass 
 
+
+
+class RecForm(forms.ModelForm):
+    class Meta:
+        model = RecProfile
+        fields = '__all__'
+        exclude = ['user']
+
+    def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+    
+    
+            for i in self.fields:
+                self.fields[i].widget.attrs.update({
+                    'class' : 'form-control'
+            })
+
+class JobSeekerForm(forms.ModelForm):
+    class Meta:
+        model = JobSeekerProfile 
+        fields = '__all__'
+        exclude = ['user']
+
+    def __init__(self, *args, **kwargs):
+            super().__init__(*args, **kwargs)
+    
+    
+            for i in self.fields:
+                self.fields[i].widget.attrs.update({
+                    'class' : 'form-control'
+            })

@@ -129,3 +129,5 @@ MAILERS = {
 
 
 AUTH_USER_MODEL = 'jobApp.UserModel'
+
+LOGIN_URL = 'LoginPage'
