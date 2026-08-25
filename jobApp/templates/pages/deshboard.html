@@ -2,12 +2,14 @@
 
 
 {% block body %}
+
+<h1>{{request.user}}-{{request.user.user_types}}</h1>
 {% for i in form %}
 <div class="card" style="width: 18rem;">
   <div class="card-body">
     <h5 class="card-title">{{i.company_name}}</h5>
     <p class="card-text">{{i.company_description}}</p>
-    <a href="#" class="btn btn-primary">{{i.btn}}</a>
+    <a href="#" class="btn btn-primary">{{btn}}</a>
   </div>
 </div>
 {% endfor %}

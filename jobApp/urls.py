@@ -9,5 +9,9 @@ urlpatterns = [
     path('home',home,name='home'),
     
     path('recPage',recPage,name='recPage'),
+    path('jobproPage',jobproPage,name='jobproPage'),
+
+    path('JobPostPage',JobPostPage,name='JobPostPage'),
     path('jobPage',jobPage,name='jobPage'),
+    path('JobApplyPage',JobApplyPage,name='JobApplyPage'),
 ]

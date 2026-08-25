@@ -14,7 +14,7 @@ class UserModel(AbstractUser):
     
 
 class RecProfile(models.Model):
-    user = models.OneToOneField(UserModel,on_delete=models.CASCADE)
+    user = models.OneToOneField(UserModel,on_delete=models.CASCADE,null=True)
     company_name = models.CharField(max_length=100,null=True)
     company_description = models.TextField(null=True)
     company_location = models.CharField(max_length=100,null=True)
@@ -23,7 +23,7 @@ class RecProfile(models.Model):
         return self.company_name
 
 class JobSeekerProfile(models.Model):
-    user = models.OneToOneField(UserModel,on_delete=models.CASCADE)
+    user = models.OneToOneField(UserModel,on_delete=models.CASCADE,null=True)
     name = models.CharField(max_length=100,null=True)
     email = models.EmailField(null=True)
     skill = models.CharField(max_length=100,null=True)
@@ -33,7 +33,7 @@ class JobSeekerProfile(models.Model):
 
 
 class JobPostModel(models.Model):
-    Recruiters = models.ForeignKey(UserModel,on_delete=models.CASCADE)
+    Recruiters = models.ForeignKey(UserModel,on_delete=models.CASCADE,null=True)
     JobTitle = models.CharField(max_length=100,null=True)
     NumberOfOpening = models.PositiveIntegerField(null=True)
     category = models.CharField(max_length=100,null=True)
@@ -45,7 +45,7 @@ class JobPostModel(models.Model):
 
 
 class JobApplyModel(models.Model):
-    JobSeeker = models.ForeignKey(UserModel,on_delete=models.CASCADE)
+    JobSeeker = models.ForeignKey(UserModel,on_delete=models.CASCADE,null=True)
     Job = models.ForeignKey(JobPostModel, on_delete=models.CASCADE)
     applied_at = models.DateTimeField(auto_now_add=True)
     status = models.CharField(max_length=20, default='Pending')

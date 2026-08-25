@@ -50,6 +50,7 @@ def deshboard(request):
      form = RecProfile.objects.all()
      context = {
           'form' : form,
+          'btn' : 'See More'
      }
      return render(request,'pages/deshboard.html',context)
 
@@ -70,7 +71,7 @@ def recPage(request):
      
     context = {
              'form' : form,
-             'btn' : 'Submit'
+             'btn' : 'See More'
          }
     return render(request,'pages/baseForm.html',context)
 
@@ -79,12 +80,13 @@ def home(request):
      form = JobSeekerProfile.objects.all()
      context = {
           'form' : form,
+          'btn':'submit'
      }
      return render(request,'pages/home.html',context)
 
 
 @login_required
-def jobPage(request):
+def jobproPage(request):
     profile = JobSeekerProfile.objects.filter(user=request.user).first()
 
     if request.method == 'POST':
@@ -104,24 +106,32 @@ def jobPage(request):
     return render(request,'pages/baseForm.html',context)
 
 
+def jobPage(request):
+     form = JobPostModel.objects.all()
 
+     context = {
+          'form' : form,
+          'btn' : 'Apply'
+     }
+     return render(request,'pages/job.html',context)
 
 @login_required
 def JobPostPage(request):
-    profile = JobPostModel.objects.filter(user=request.user).first()
 
     if request.method == 'POST':
-             form = JobPostForm(request.POST,instance=profile)
+             form = JobPostForm(request.POST)
              if form.is_valid():
-                 profile = form.save(commit=False)
-                 profile.user = request.user
-                 profile.save()
-                 return redirect('home')
+                 form.save()
+                 return redirect('jobPage')
      
-    form = JobPostForm(instance=profile)
+    form = JobPostForm()
      
     context = {
              'form' : form,
              'btn' : 'Submit'
          }
     return render(request,'pages/baseForm.html',context)
+
+
+def JobApplyPage(requset):
+     return render(requset,'pages/baseForm.html')

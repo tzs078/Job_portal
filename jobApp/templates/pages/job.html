@@ -1,0 +1,21 @@
+{% extends 'auth/base.html' %}
+
+
+{% block body %}
+
+{% for i in form %}
+<div class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">{{i.JobTitle}}</h5>
+    <p class="card-text">{{i.NumberOfOpening}}</p>
+    <p class="card-text">{{i.category}}</p>
+    <p class="card-text">{{i.description}}</p>
+    <p class="card-text">{{i.skill}}</p>
+    {% if request.user.user_types == 'JobSeeker'  %}
+     <a href="#" class="btn btn-primary">{{btn}}</a>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+{% endblock body %}
+
