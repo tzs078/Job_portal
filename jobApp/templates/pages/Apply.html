@@ -1,0 +1,26 @@
+{% extends 'auth/base.html' %}
+
+
+{% block body %}
+
+<table class='table'>
+    <thead>
+        <tr>
+            <th>Job Title</th>
+            <th>applied_at</th>
+            <th>status</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for i in form %}
+        <tr>
+            <td>{{i.Job.JobTitle}}</td>
+            <td>{{i.applied_at}}</td>
+            <td>{{i.status}}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+    
+{% endblock body %}
+    

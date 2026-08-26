@@ -14,4 +14,7 @@ urlpatterns = [
     path('JobPostPage',JobPostPage,name='JobPostPage'),
     path('jobPage',jobPage,name='jobPage'),
     path('JobApplyPage',JobApplyPage,name='JobApplyPage'),
+
+    path('JobApplyPage/<int:id>/',JobApplyPage,name='JobApplyPage'),
+    path('ApplyPage',ApplyPage,name='ApplyPage'),
 ]

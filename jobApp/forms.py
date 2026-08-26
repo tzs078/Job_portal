@@ -76,7 +76,7 @@ class JobApplyForm(forms.ModelForm):
     class Meta:
         model = JobApplyModel 
         fields = '__all__'
-        exclude = ['JobSeeker','Job']
+        exclude = ['JobSeeker']
 
     def __init__(self, *args, **kwargs):
             super().__init__(*args, **kwargs)

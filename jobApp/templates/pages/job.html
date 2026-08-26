@@ -12,7 +12,7 @@
     <p class="card-text">{{i.description}}</p>
     <p class="card-text">{{i.skill}}</p>
     {% if request.user.user_types == 'JobSeeker'  %}
-     <a href="#" class="btn btn-primary">{{btn}}</a>
+     <a href="{% url 'JobApplyPage' i.id %}" class="btn btn-primary">{{btn}}</a>
     {% endif %}
   </div>
 </div>
